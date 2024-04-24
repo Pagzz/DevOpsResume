@@ -4,12 +4,11 @@ FROM nginx:alpine
 # Copy the static content from the 'homepage' directory
 COPY homepage/ /usr/share/nginx/html
 
-# Remove the default Nginx configuration file
-RUN rm /etc/nginx/conf.d/default.conf
+# Copy the main Nginx config file into place
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Copy the custom Nginx config from your 'config/nginx' directory
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
+# Copy the server configuration into the conf.d directory
+COPY default.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80
 EXPOSE 80
