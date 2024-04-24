@@ -1,0 +1,27 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Define a Docker agent to use Docker commands
+                    docker.image('node:12-alpine').inside {
+                        sh 'npm install'
+                        sh 'npm test'
+                    }
+                }
+            }
+        }
+        stage('Build and Push Image') {
+            steps {
+                script {
+                    // Login and push to a Docker registry
+                    docker.withRegistry('https://registry.example.com', 'registry-credentials-id') {
+                        def app = docker.build("myapp:${env.BUILD_ID}")
+                        app.push()
+                    }
+                }
+            }
+        }
+    }
+}

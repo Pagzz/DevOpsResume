@@ -3,7 +3,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
-    background: #e0e0e0; /* Light grey background for a softer look */
+    background: #ffffff; /* Light grey background for a softer look */
     color: #333;
     line-height: 1.6;
 }
@@ -64,7 +64,7 @@ main {
     background-color: #ffffff;
     margin: 20px auto;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.705);
     width: 80%;
     border-radius: 8px; /* Rounded corners for a softer look */
 }
@@ -73,7 +73,7 @@ main {
     background-color: #ffffff;
     margin: 20px auto;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.705);
     width: 80%;
     border-radius: 8px; /* Rounded corners for a softer look */
     align-content: center;
@@ -112,10 +112,10 @@ button {
 .carousel {
     width: 600px; /* This width will dictate the size of the viewable area */
     height: 200px; /* This height will dictate the size of the viewable area */
-    margin: 0px auto;
+    margin: 50px auto;
     overflow: hidden;
     position: relative;
-    background-color: rgba(255, 255, 255, 0); /* Translucent background */
+    background-color: rgba(0, 0, 0, 0.089); /* Translucent background */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
 }
 
