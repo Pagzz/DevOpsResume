@@ -1,13 +1,19 @@
 # Use an official Nginx image
 FROM nginx:alpine
 
+# Remove the default Nginx configuration files
+RUN rm /etc/nginx/conf.d/default.conf
+RUN rm /etc/nginx/nginx.conf
+
 # Copy the static content from the 'homepage' directory
 COPY homepage/ /usr/share/nginx/html
 
-# Copy the main Nginx config file into place
-COPY nginx.conf /etc/nginx/nginx.conf
+# Copy images and PDFs if they need to be directly accessible
+COPY images/ /usr/share/nginx/html/images
+COPY pdf/ /usr/share/nginx/html/pdf
 
-# Copy the server configuration into the conf.d directory
+# Copy the main Nginx configuration and server block configuration
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80
