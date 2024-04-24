@@ -5,11 +5,10 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the static content from the 'homepage' directory
-COPY homepage/ /usr/share/nginx/html
+COPY homepage/ /usr/share/nginx/html/
 
-# Ensure homepage.html is renamed to index.html if it's your main page
-# You can also do this directly in your source directory structure
-RUN mv /usr/share/nginx/html/homepage.html /usr/share/nginx/html/index.html
+# Rename homepage.html to index.html if it exists
+RUN if [ -f /usr/share/nginx/html/homepage.html ]; then mv /usr/share/nginx/html/homepage.html /usr/share/nginx/html/index.html; fi
 
 # Copy images and PDFs
 COPY images/ /usr/share/nginx/html/images
