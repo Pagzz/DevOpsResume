@@ -1,20 +1,22 @@
 # Use an official Nginx image
 FROM nginx:alpine
 
-# Remove the default Nginx configuration file
-RUN rm /etc/nginx/conf.d/default.conf
+# Remove the default Nginx content
+RUN rm -rf /usr/share/nginx/html/*
 
 # Copy the static content from the 'homepage' directory
 COPY homepage/ /usr/share/nginx/html
 
-# Copy images and PDFs if they need to be directly accessible
+# Ensure homepage.html is renamed to index.html if it's your main page
+# You can also do this directly in your source directory structure
+RUN mv /usr/share/nginx/html/homepage.html /usr/share/nginx/html/index.html
+
+# Copy images and PDFs
 COPY images/ /usr/share/nginx/html/images
 COPY PDF/ /usr/share/nginx/html/PDF
 
-# Copy the main Nginx config file into place
+# Use the default Nginx configuration with modifications if necessary
 COPY nginx.conf /etc/nginx/nginx.conf
-
-# Copy the server configuration into the conf.d directory
 COPY default.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 80
