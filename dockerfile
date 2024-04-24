@@ -10,7 +10,7 @@ COPY homepage/ /usr/share/nginx/html
 
 # Copy images and PDFs if they need to be directly accessible
 COPY images/ /usr/share/nginx/html/images
-COPY pdf/ /usr/share/nginx/html/pdf
+COPY PDF/ /usr/share/nginx/html/PDF
 
 # Copy the main Nginx configuration and server block configuration
 COPY nginx.conf /etc/nginx/nginx.conf
